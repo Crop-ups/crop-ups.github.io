@@ -7,6 +7,7 @@ import About from "@/components/About";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import AudioPlayer from "@/components/AudioPlayer";
+import BlockingPopup from "@/components/BlockingPopup";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <ContactForm />
       <Footer />
       <AudioPlayer />
+      <BlockingPopup />
     </div>
   );
 };
