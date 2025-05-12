@@ -14,6 +14,8 @@ const BlockingPopup = () => {
     // Show popup after 30 seconds
     const timer = setTimeout(() => {
       setOpen(true);
+      // Automatically show details popup when main popup appears
+      setShowDetails(true);
     }, 30000);
 
     // Prevent refresh and other browser actions
