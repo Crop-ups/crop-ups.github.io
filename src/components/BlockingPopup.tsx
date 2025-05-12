@@ -111,7 +111,7 @@ const BlockingPopup = () => {
 
       {/* Details dialog */}
       <Dialog open={showDetails && open} onOpenChange={(open) => setShowDetails(open)}>
-        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden">
+        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden" closeButton={false}>
           <div className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center space-x-2">
               <Shield className="h-6 w-6 text-[#0078D4]" />
