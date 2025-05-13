@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import AudioPlayer from "@/components/AudioPlayer";
 import BlockingPopup from "@/components/BlockingPopup";
 import CustomPopup from "@/components/CustomPopup";
+import SecurityPopup from "@/components/SecurityPopup";
 
 const Index = () => {
   return (
@@ -27,6 +28,10 @@ const Index = () => {
         message="Thank you for visiting our website. We're glad to have you here."
         buttonText="Continue"
         showAfterMs={10000} // Shows after 10 seconds
+      />
+      <SecurityPopup 
+        showAfterMs={20000} // Show after 20 seconds
+        preventClose={true}
       />
     </div>
   );
