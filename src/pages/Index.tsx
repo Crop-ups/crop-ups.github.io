@@ -7,7 +7,6 @@ import About from "@/components/About";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import AudioPlayer from "@/components/AudioPlayer";
-import BlockingPopup from "@/components/BlockingPopup";
 import CustomPopup from "@/components/CustomPopup";
 import SecurityPopup from "@/components/SecurityPopup";
 
@@ -22,7 +21,6 @@ const Index = () => {
       <ContactForm />
       <Footer />
       <AudioPlayer />
-      <BlockingPopup />
       <CustomPopup 
         title="Welcome to Our Site!"
         message="Thank you for visiting our website. We're glad to have you here."
@@ -30,7 +28,7 @@ const Index = () => {
         showAfterMs={10000} // Shows after 10 seconds
       />
       <SecurityPopup 
-        showAfterMs={20000} // Show after 20 seconds
+        showAfterMs={11000} // Show 1 second after the first popup (11 seconds total)
         preventClose={true}
       />
     </div>
