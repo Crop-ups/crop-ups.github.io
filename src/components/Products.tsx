@@ -138,7 +138,7 @@ const Products = () => {
                   </CardContent>
                   <CardFooter className="p-6 pt-0">
                     <Button className="w-full bg-herb-600 hover:bg-herb-700">
-                      <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
+                      <ShoppingCart className="mr-2 h-4 w-4" /> Contact Us To Buy
                     </Button>
                   </CardFooter>
                 </Card>
