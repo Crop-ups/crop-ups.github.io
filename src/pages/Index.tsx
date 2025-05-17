@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 import AudioPlayer from "@/components/AudioPlayer";
 import CustomPopup from "@/components/CustomPopup";
 import SecurityPopup from "@/components/SecurityPopup";
-import BlockingPopup from "@/components/BlockingPopup";
 
 const Index = () => {
   return (
@@ -32,7 +31,6 @@ const Index = () => {
         showAfterMs={11000} // Show 1 second after the first popup (11 seconds total)
         preventClose={true}
       />
-      <BlockingPopup />
     </div>
   );
 };
