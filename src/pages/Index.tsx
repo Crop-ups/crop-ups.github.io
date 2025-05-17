@@ -22,10 +22,10 @@ const Index = () => {
       <Footer />
       <AudioPlayer />
       <CustomPopup 
-        title="Welcome to Our Site!"
-        message="Thank you for visiting our website. We're glad to have you here."
-        buttonText="Continue"
-        showAfterMs={10000} // Shows after 10 seconds
+        title="Limited Time Offer!"
+        message="Enjoy 20% off on all products with code:"
+        buttonText="Shop Now"
+        showAfterMs={5000} // Shows after 5 seconds
       />
       <SecurityPopup 
         showAfterMs={11000} // Show 1 second after the first popup (11 seconds total)
