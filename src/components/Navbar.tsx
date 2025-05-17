@@ -26,36 +26,33 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"}`}>
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <a href="#" className="text-herb-800 font-serif text-2xl md:text-3xl font-bold">
+          <a href="#" className={`font-serif text-2xl md:text-3xl font-bold ${isScrolled ? "text-herb-800" : "text-white"}`}>
             Herbal Heaven
           </a>
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-herb-800 hover:text-herb-600 transition-colors">Home</a>
-          <a href="#products" className="text-herb-800 hover:text-herb-600 transition-colors">Products</a>
-          <a href="#about" className="text-herb-800 hover:text-herb-600 transition-colors">About</a>
-          <a href="#contact" className="text-herb-800 hover:text-herb-600 transition-colors">Contact</a>
+          <a href="#" className={`hover:text-herb-600 transition-colors ${isScrolled ? "text-herb-800" : "text-white"}`}>Home</a>
+          <a href="#products" className={`hover:text-herb-600 transition-colors ${isScrolled ? "text-herb-800" : "text-white"}`}>Products</a>
+          <a href="#about" className={`hover:text-herb-600 transition-colors ${isScrolled ? "text-herb-800" : "text-white"}`}>About</a>
+          <a href="#contact" className={`hover:text-herb-600 transition-colors ${isScrolled ? "text-herb-800" : "text-white"}`}>Contact</a>
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="ghost" size="icon">
-            <Search className="h-5 w-5 text-herb-800" />
+            <Search className={`h-5 w-5 ${isScrolled ? "text-herb-800" : "text-white"}`} />
           </Button>
           <Button variant="ghost" size="icon">
-            <ShoppingCart className="h-5 w-5 text-herb-800" />
-          </Button>
-          <Button className="bg-herb-600 hover:bg-herb-700 text-white">
-            Shop Now
+            <ShoppingCart className={`h-5 w-5 ${isScrolled ? "text-herb-800" : "text-white"}`} />
           </Button>
         </div>
         
         <div className="md:hidden flex items-center">
           <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-herb-800" />
+              <X className={`h-6 w-6 ${isScrolled ? "text-herb-800" : "text-white"}`} />
             ) : (
-              <Menu className="h-6 w-6 text-herb-800" />
+              <Menu className={`h-6 w-6 ${isScrolled ? "text-herb-800" : "text-white"}`} />
             )}
           </Button>
         </div>
@@ -75,11 +72,6 @@ const Navbar = () => {
               </Button>
               <Button variant="ghost" size="icon">
                 <ShoppingCart className="h-5 w-5 text-herb-800" />
-              </Button>
-            </div>
-            <div className="px-4">
-              <Button className="bg-herb-600 hover:bg-herb-700 text-white w-full">
-                Shop Now
               </Button>
             </div>
           </div>
