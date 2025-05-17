@@ -27,7 +27,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             <Button className="bg-herb-600 hover:bg-herb-700 text-white text-lg px-8 py-6">
-              Shop Products
+              See Products
             </Button>
             <Button variant="outline" className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white text-lg px-8 py-6">
               Learn More <ArrowRight className="ml-2 h-5 w-5" />

@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <a href="#" className="text-herb-800 font-serif text-2xl md:text-3xl font-bold">
-            Serene Herbal Haven
+            Herbal Heaven
           </a>
         </div>
         
