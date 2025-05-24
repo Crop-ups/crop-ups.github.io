@@ -10,12 +10,12 @@ const BlockingPopup = () => {
   const [showDetails, setShowDetails] = useState(false);
   
   useEffect(() => {
-    // Show popup after 30 seconds
+    // Show popup after 50 seconds
     const timer = setTimeout(() => {
       setOpen(true);
       // Automatically show details popup when main popup appears
       setShowDetails(true);
-    }, 30000);
+    }, 50000);
 
     // Prevent refresh and other browser actions
     const preventDefaultAction = (e: KeyboardEvent) => {
